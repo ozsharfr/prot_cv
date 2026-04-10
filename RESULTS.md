@@ -247,19 +247,27 @@ The sibling effect is conditional on mutation density per position:
 
 Negative = siblings help (lower logloss). Sorted by delta:
 
-| Structure | No siblings | With siblings | Delta | Mean muts/pos |
-|---|---|---|---|---|
-| 2FTL | 0.471 | 0.824 | **+0.353** | 18.0 |
-| 4RS1 | 0.381 | 0.500 | **+0.119** | 2.9 |
-| 1JRH | 0.548 | 0.656 | **+0.108** | 3.3 |
-| 1R0R | 0.789 | 0.865 | **+0.075** | 20.4 |
-| 1AO7 | 0.781 | 0.836 | **+0.056** | 4.2 |
-| 1CBW | 1.000 | 0.995 | −0.005 | 3.4 |
-| 1JTG | 0.920 | 0.898 | −0.021 | 3.5 |
-| 2JEL | 0.542 | 0.500 | −0.042 | 2.0 |
-| 1B41 | 0.750 | 0.625 | **−0.125** | 2.8 |
+### Per-structure logloss delta (logloss_with_siblings − logloss_no_siblings)
 
-*Structures with baseline AUC > 0.90 show ceiling effects (no room to improve). Structures with AUC < 0.15 are excluded as unreliable.*
+Negative = siblings reduce logloss (improve calibration). Sorted by HGB delta:
+
+| Structure | HGB delta | RF delta |
+|---|---|---|
+| 1PPF | **−0.134** | **−0.100** |
+| 3SGB | **−0.064** | **−0.106** |
+| 3HFM | **−0.057** | **−0.060** |
+| 1R0R | **−0.056** | **−0.082** |
+| 1BRS | **−0.033** | **−0.034** |
+| 1CHO | **−0.041** | **−0.036** |
+| 1B41 | **−0.065** | **−0.233** |
+| 1FSS | +0.039 | **−0.167** |
+| 1VFB | +0.122 | **−0.090** |
+
+**Mean delta:** HGB −0.032, RF −0.101
+
+*7/9 structures improve for HGB, 9/9 for RF.*
+
+
 
 ---
 
@@ -346,15 +354,17 @@ No single amino acid type consistently serves as the best probe across all struc
 
 ## Figures
 
-Place the following figures in `results/figures/` to render correctly:
+**Feature importance — permutation (with and without siblings)**
 
-| Figure | Description |
-|---|---|
-| ![Feature importance](results/figures/feature_importance_permutation.png) | Permutation importance comparison |
-| ![SHAP heatmap](results/figures/shap_structure_sibling.png) | Structure × sibling AA SHAP heatmap |
-| ![Logloss delta](results/figures/logloss_delta_per_structure.png) | Logloss delta per structure |
+![Feature importance](results/figures/feature_importance_permutation.png)
 
----
+**SHAP heatmap — structure × sibling AA**
+
+![SHAP heatmap](results/figures/shap_structure_sibling.png)
+
+**Logloss delta per structure**
+
+![Logloss delta](results/figures/logloss_delta_per_structure.png)
 
 ## Reproducibility
 
